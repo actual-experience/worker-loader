@@ -49,6 +49,10 @@ function workerGenerator(loaderContext, workerFilename, workerSource, options) {
   const esModule =
     typeof options.esModule !== "undefined" ? options.esModule : true;
   const fnName = `${workerConstructor}_fn`;
+  
+  if (typeof workerFilename === 'string' && !workerFilename.startsWith('/')) {
+    workerFilename = `/${workerFilename}`;
+  }
 
   if (options.inline) {
     const InlineWorkerPath = stringifyRequest(

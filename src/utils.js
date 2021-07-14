@@ -49,8 +49,12 @@ function workerGenerator(loaderContext, workerFilename, workerSource, options) {
   const esModule =
     typeof options.esModule !== "undefined" ? options.esModule : true;
   const fnName = `${workerConstructor}_fn`;
-  
-  if (typeof workerFilename === 'string' && !workerFilename.startsWith('/')) {
+
+  if (
+    typeof workerFilename === "string" &&
+    !workerFilename.startsWith("/") &&
+    options.production === true
+  ) {
     workerFilename = `/${workerFilename}`;
   }
 

@@ -54,6 +54,9 @@
     },
     "esModule": {
       "type": "boolean"
+    },
+    "production": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
